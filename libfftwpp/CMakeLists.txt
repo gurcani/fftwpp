@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(fftwpp VERSION 0.1 LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(MPI REQUIRED)
+include_directories(${MPI_INCLUDE_PATH} ${CMAKE_SOURCE_DIR}/.. ${CMAKE_SOURCE_DIR}/../mpi ${CMAKE_SOURCE_DIR}/../tests)
+add_library (${PROJECT_NAME} SHARED ../fftw++.cc ../mpi/mpifftw++.cc ../convolution.cc ../mpi/mpiconvolution.cc ../mpi/mpitranspose.cc cfftwpp.cc)
+target_link_libraries(${PROJECT_NAME} ${MPI_LIBRARIES} fftw3_omp fftw3 m)
