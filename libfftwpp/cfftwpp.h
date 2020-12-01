@@ -46,7 +46,6 @@ extern "C" {
     unsigned int nyp=ny/2+1;
     unsigned int mx=(nx+1)/2;
     unsigned int my=(ny+1)/2;
-    std::cout<<"mx="<<mx<<"my="<<my<<std::endl;
     return new ImplicitHConvolution2MPI(mx,my,xcomp,ycomp,dg,du,(Complex *)g,dfoptions);
   }
   void fftwpp_hconv2d_mpi_convolve(ImplicitHConvolution2MPI* hconv, double __complex__ *f, double __complex__ *g) {
