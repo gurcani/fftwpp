@@ -339,7 +339,7 @@ class HConvolution(object):
             self._convolve = clib.fftwpp_hconv1d_convolve
             self._delete = clib.fftwpp_hconv1d_delete
         elif self.dim == 2:
-            self.cptr = clib.fftwpp_create_hconv2d(c_int((shape[0] + 1) / 2),
+            self.cptr = clib.fftwpp_create_hconv2d(c_int(int((shape[0] + 1) / 2)),
                                                    c_int(shape[1]))
             self._convolve = clib.fftwpp_hconv2d_convolve
             self._delete = clib.fftwpp_hconv2d_delete
