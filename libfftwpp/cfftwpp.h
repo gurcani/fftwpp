@@ -52,6 +52,21 @@ extern "C" {
     Complex *G[]={(Complex *)f,(Complex *)g};
     hconv->convolve(G,multbinary);
   }
+
+  ImplicitHConvolution2MPI* fftwpp_create_hconv2d_mpi_adv2(split &dg,split &du,
+						      bool xcomp, bool ycomp, double __complex__ *g){
+    unsigned int nx=dg.X,ny=(dg.Y-1)*2+xcomp;
+    unsigned int nyp=ny/2+1;
+    unsigned int mx=(nx+1)/2;
+    unsigned int my=(ny+1)/2;
+    return new ImplicitHConvolution2MPI(mx,my,xcomp,ycomp,dg,du,(Complex *)g,dfoptions,2,2);
+  }
+
+  
+  void fftwpp_hconv2d_mpi_convolve_adv2(ImplicitHConvolution2MPI* hconv, double __complex__ *f, double __complex__ *g) {
+    Complex *G[]={(Complex *)f,(Complex *)g};
+    hconv->convolve(G,multadvection2);
+  }
   
 #ifdef  __cplusplus
   }
