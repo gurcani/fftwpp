@@ -113,6 +113,5 @@ extern "C" {
       F1[j]=dxphi*dyn-dyphi*dxn;
     }
 #endif
-  }
-  
+  }  
 }
