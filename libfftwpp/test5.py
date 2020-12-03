@@ -10,12 +10,10 @@ import numpy as np
 import os,sys
 from mpi4py import MPI
 from numpy.ctypeslib import ndpointer
-from ctypes import CDLL,CFUNCTYPE,POINTER,c_double,c_int,c_uint,c_void_p,c_bool,Structure,byref,cast
+from ctypes import CDLL,POINTER,c_double,c_int,c_uint,c_void_p,c_bool,Structure
 base = os.path.dirname(os.path.abspath(__file__))
 clib = CDLL(os.path.join(base, 'libfftwpp.so'))
 sys.path.insert(1, os.path.realpath('../wrappers/'))
-#clib = CDLL(os.path.join(base, 'libfftwpp.so'))
-import fftwpp
 
 class split(Structure):
   _fields_=[("X",c_uint),("Y",c_uint)
