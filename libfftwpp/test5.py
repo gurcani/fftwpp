@@ -99,7 +99,7 @@ dky=2*np.pi/Ly
 
 #ky=np.arange(0,nyp)*dkx
 kx,ky=np.meshgrid(np.arange(-mx+int(xcomp),mx)*dkx,np.arange(0,nyp)*dkx,indexing='ij')
-ksqr=(kx**2,ky**2)
+ksqr=kx**2+ky**2
 grpptr=clib.fftwpp_mpi_group(nyp,commp)
 grp=group.from_address(grpptr)
 
